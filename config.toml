@@ -5,8 +5,8 @@ theme = "hemingway2"
 copyright = ""
 disqusShortname = ""
 googleAnalytics = ""
-description = "Your personal description"
-keywords = ["keyword1", "keyword2"]
+description = "Stuff I did in teams building software"
+keywords = []
 
 [taxonomies]
 tag = "tags"
