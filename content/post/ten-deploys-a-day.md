@@ -1,7 +1,7 @@
 +++
 
 title = "Ten deploys a day and still moving slowly"
-date = "2013-06-17T00:00:00Z"
+date = "2013-07-21T00:00:00Z"
 author = "Daniel Watts"
 tags = ["continuous-delivery", "technical-debt", "cycle-time", "deployment"]
 slug = "ten-deploys-a-day-and-still-moving-slowly"
