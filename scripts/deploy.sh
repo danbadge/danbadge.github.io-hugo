@@ -1,12 +1,24 @@
 #!/bin/bash
 
-git checkout gh-pages
+echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
-rm -rf public
-hugo -d public
+# Build the project.
+hugo # if using a theme, replace by `hugo -t <yourtheme>`
+
+# Go To Public folder
 cd public
-git add --all
-git commit -m "Publishing to gh-pages"
-git push origin gh-pages
+# Add changes to git.
+git add -A
+
+# Commit changes.
+msg="rebuilding site `date`"
+if [ $# -eq 1 ]
+  then msg="$1"
+fi
+git commit -m "$msg"
+
+# Push source and build repos.
+git push origin master
+
+# Come Back
 cd ..
-# git push origin gh-pages
