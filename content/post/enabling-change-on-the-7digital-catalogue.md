@@ -3,7 +3,7 @@
 title = "Enabling change on the 7digital Catalogue"
 date = "2014-08-26T16:51:00Z"
 author = "Daniel Watts"
-tags = ["refactoring", "architecture", "lucene", "technical-debt", "automation"]
+tags = ["refactoring", "infrastructure", "lucene", "technical-debt", "automation"]
 slug = "enabling-change-on-the-7digital-catalogue"
 
 +++
