@@ -1,9 +1,9 @@
-baseurl = "https://example.com"
+baseurl = "https://danbadge.github.com"
 languageCode = "en"
-title = "Hemingway2"
+title = "Daniel Watts"
 theme = "hemingway2"
 copyright = "&copy; <a href=\"https://github.com/beli3ver\">Malte Kiefer</a> 2016"
-disqusShortname = "shortname"
+disqusShortname = ""
 googleAnalytics = ""
 description = "Your personal description"
 keywords = ["keyword1", "keyword2"]
@@ -16,24 +16,12 @@ category = "categories"
 
 [params.highlight]
 style = "github"
-languages = ["go", "dockerfile"]
+languages = []
 
 [[params.social]]
-url = "https://github.com/beli3ver"
+url = "https://github.com/danbadge"
 fa_icon = "fa-github"
 
 [[params.social]]
-url = "https://gitlab.com/beli3ver"
-fa_icon = "fa-gitlab"
-
-[[params.social]]
-url = "https://twitter.com/malkie16"
+url = "https://twitter.com/dan_badge"
 fa_icon = "fa-twitter"
-
-[[params.social]]
-url = "https://telegram.me/beli3ver"
-fa_icon = "fa-telegram"
-
-[[params.social]]
-url = "/index.xml"
-fa_icon = "fa-rss"
