@@ -20,7 +20,7 @@ Eventually a new feature came along which would have required many changes and a
 
 To do any of this we needed to source much of the data stored in Solr from somewhere else. We recognised early on that endpoints such as ~/track/search and ~/track/chart where just a list of tracks and a full track resource could be retrieved from another public endpoint; [~/track/details](http://api.7digital.com/1.2/track/details?trackid=12345&oauth_consumer_key=YOUR_KEY_HERE&country=GB). With this in mind we set about improving a number of core catalogue endpoints (including ~/track/details) reducing response times dramatically, improving the code base and bringing the monitoring of these endpoints up to scratch with everything else. The ~/track/search endpoint could then look something like this:
 
-[![Track Search Architecture](/img/track-search-architecture.jpg)
+![Track Search Architecture](/img/track-search-architecture.jpg)
 
 It remained on the old track index for a while but was only touching a few of the fields. Taking this incremental step, which had a small negative impact on performance, meant we could bring a new smaller index up and switch over to it with minimal disruption. We managed this risk further by using [canary deploys](http://www.infoq.com/news/2013/03/canary-release-improve-quality) too, rolling out searches on the new index to a few servers until we were satisfied enough to do a full deployment. The **new track index weighed in at just over 6GB** and response times are averaging 500ms, a dramatic improvement.
 
