@@ -12,7 +12,7 @@ At Driftrock we're a small company that has grown from 8 to 18 people in the las
 ## Shhh! We're Releasing Software
 Previously, we deployed a change to one of our applications and didn't tell anyone unless it solved a particular client issue. This meant we wouldn't seek much feedback on new features and the team's progress and activity was largely unseen by the rest of the company. Bearing in mind that our software is increasingly used internally, this seemed like a real missed opportunity.
 
-**Enter Release Crab**
+## Enter Release Crab
 Now we have a dedicated Slack channel for internally announcing the release of new features, bug fixes and other changes. The announcement is typically done by a developer after they push their changes to production as they have the most context. But we're pragmatic with it and don't announce every little change, for example, we might wait until we've finished a sequence of quick deployments. However, [we value feedback](http://tech.driftrock.com/post/tech-values) so we're regularly announcing updates.
 
 Here's an example of a few changes going live for Create (an application for quickly creating ads on Facebook):
