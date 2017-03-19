@@ -68,3 +68,24 @@ a, a:visited, a:hover {
 .post .content h2::before {
     content: none;
 }
+
+.title {
+  font-size: 28px;
+}
+
+div.tags {
+  margin-top: 40px;
+}
+
+.tags a.button.is-link {
+  font-family: 'Open Sans', 'Lucida Sans', sans-serif;
+  text-decoration: none;
+  background-color: rgba(0,0,0,.05);
+  border-radius: 2px;
+  font-size: 12px;
+  margin-right: 4px;
+}
+
+.tags a.button.is-link:hover {
+  background-color: rgba(0,0,0,.08);
+}
