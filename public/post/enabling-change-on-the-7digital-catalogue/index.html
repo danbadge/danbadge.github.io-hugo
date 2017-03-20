@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="" name="keywords">
+<meta content="Enabling change on the 7digital Catalogue - Daniel Watts" property="og:title">
+<title>Enabling change on the 7digital Catalogue | Daniel Watts</title>
+<link rel="stylesheet" href="https://danbadge.github.io/css/style.css">
+<link rel="stylesheet" href="https://danbadge.github.io/css/override.css">
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Lora|Open+Sans:400,600" rel="stylesheet">
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://danbadge.github.io"><h1 class="title is-4">Daniel Watts</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/danbadge">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/dan_badge">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section post">
+  <div class="container">
+    <h2 class="subtitle is-6">August 26, 2014</h2>
+    <h1 class="title">Enabling change on the 7digital Catalogue</h1>
+    <div class="content">
+      <p>Since February 2014 I’ve been working on the Content Discovery Team here at 7digital, we are responsible for every endpoint listed under Catalogue API here - <a href="http://developer.7digital.com/resources/api-docs/catalogue-api">http://developer.7digital.com/resources/api-docs/catalogue-api</a> – and probably a few more. This is a mix of discovery endpoints and core catalogue endpoints often split by artist, albums (releases) and tracks. The discovery side of it consists of searching, recommendations, charts, genres, new and popular tracks and albums. The core catalogue endpoints are requests to the API for an album, tracks on an album, an artist, an artist’s releases or just track information using a 7digital unique identifier (referred to as releaseId, trackId and artistId).</p>
+
+<p>Going back to early February the team, three developers, a QA and product manager, had <strong>inherited a maintenance nightmare</strong>. We owned around 20 endpoints across 4 applications all of which do vaguely similar things retrieving artist, release or track information. Except we were using <strong>two large out-of-sync data stores</strong>, a SQL Server database and a Solr data store. Solr essentially containing a denormalised version of what you would find in SQL.</p>
+
+<p>Over the years there had been a push to use Solr as the single point of truth and there had been much investment to move all endpoints over to use it instead of SQL (a reasonable idea at the time). This meant we were using Solr for both text searching and Id lookups on most of the Catalogue endpoints but using SQL on a number of others. Furthermore we had to index all possible information relating to a track or release in Solr, much of which is territory specific. As an example; the price for an album is territory specific because it will be different in the UK to the US, as will the streaming and download release dates. In order to represent this data in a denormalised form in Solr, the solution was to <strong>duplicate every track and release across every territory it was available in</strong>. This was a particular problem for the track index. Given we have approximately 27 million tracks in our catalogue and content in 30 odd territories, this quickly led to a massive and expensive index of tracks which was pushing <strong>660 GB in size and contained 700 million documents</strong>.</p>
+
+<p>Due to the size of the index and the amount of data the <a href="http://api.7digital.com/1.2/track/search?q=weezer&amp;oauth_consumer_key=YOUR_KEY_HERE">~/track/search</a> endpoint performed horribly averaging 5 second response times. More pressing was the amount of <strong>unplanned and support-type work the team were performing in order to maintain the track index</strong>. This would vary from restarting live web servers to performing manual data updates to inactivate a track, which should no longer be available on the API. The latter was common because we couldn’t perform a full re-index as it would take up to FIVE DAYS and usually failed, so we built a complex indexing application which would only send to Solr those tracks which had changed. Unfortunately this workaround was built upon an existing process which was used to identify changes in the catalogue. This consisted of tons of triggers and scheduled jobs in SQL Server where it wasn’t uncommon to see nested views, temporary tables and layers of stored procedures. <strong>None of it was tested and all of it was impossible to follow and reason about.</strong></p>
+
+<p>Eventually a new feature came along which would have required many changes and additions at each step of this convoluted process. This gave us the business case required to begin simplifying our architecture. We recognised that we needed Solr for searching because this is exactly what it’s good at, but we saw no benefit in using it for Id lookups, particularly when we could be closer to the source data and have good performance using SQL Server. We wanted to shrink the size of the track index and so we needed to tackle a number of problems. We needed to remove territory specific data from the index so we could stop duplicating each track across 30 territories. We also needed to replace any unnecessary dependencies where possible and reduce the number of indexed fields to only those which should be searchable.</p>
+
+<p>To do any of this we needed to source much of the data stored in Solr from somewhere else. We recognised early on that endpoints such as ~/track/search and ~/track/chart where just a list of tracks and a full track resource could be retrieved from another public endpoint; <a href="http://api.7digital.com/1.2/track/details?trackid=12345&amp;oauth_consumer_key=YOUR_KEY_HERE&amp;country=GB">~/track/details</a>. With this in mind we set about improving a number of core catalogue endpoints (including ~/track/details) reducing response times dramatically, improving the code base and bringing the monitoring of these endpoints up to scratch with everything else. The ~/track/search endpoint could then look something like this:</p>
+
+<p><img src="/img/track-search-architecture.jpg" alt="Track Search Architecture" /></p>
+
+<p>It remained on the old track index for a while but was only touching a few of the fields. Taking this incremental step, which had a small negative impact on performance, meant we could bring a new smaller index up and switch over to it with minimal disruption. We managed this risk further by using <a href="http://www.infoq.com/news/2013/03/canary-release-improve-quality">canary deploys</a> too, rolling out searches on the new index to a few servers until we were satisfied enough to do a full deployment. The <strong>new track index weighed in at just over 6GB</strong> and response times are averaging 500ms, a dramatic improvement.</p>
+
+<p>We can now do a <strong>full re-index of tracks within an hour</strong>, we do this twice a day. This allows us to experiment more freely using features of Solr and Lucene without being held back by technical debt. Now we make changes daily, which allows us to test out any assumptions. This is particularly valuable when working on something as complex and subjective as text search.</p>
+
+<p>Crucially with the old track index gone <strong>unplanned work tailed off</strong> and we started delivering business value. Most recently adding auto-complete style searching to all three search endpoints and resolving some long standing problems with matching on artist names like P!nk and Ke$ha.</p>
+
+<p>We’ve also taken all the release endpoints in a similar architectural direction, which will eventually mean we can iterate quickly on improving ~/release/search too. Technically we now have only one integration point with the catalogue database for releases and tracks, within ~/release/details and ~/track/details. Now that many of our APIs consume these endpoints we’ve improved consistency between them and we no longer have many tentacles going direct to the database, which will allow us to move a lot quicker and make improvements across the catalogue when needed.</p>
+
+<p>In conclusion, we benefited from a number of key concepts: we simplified and refactored when working through each of these technical changes, <strong>removing a lot of unnecessary complexity.</strong> For example, approaching clients about removing rarely used optional parameters and in time removing them.</p>
+
+<p>We tackled causes of unplanned work, often eliminating any immediate burden with small fixes and workarounds so we could <strong>focus more of the team’s energy on the wider problem</strong>. Similarly, we elevated these issues, making them visible to the rest of the business. This helped justify our business case for tackling the wider problem.</p>
+
+<p>We <strong>automated the Solr infrastructure,</strong> this hasn’t been mentioned much as it’s still evolving, but we’re now able to push through configuration changes to production several times a day. This a world away from where we were and came about through a combination of configuration management (CFEngine), TDD (Test Kitchen, Vagrant), a few custom scripts to automate <a href="https://wiki.apache.org/solr/CoreAdmin#RELOAD">Solr core reloads</a> and reducing the size of the track index.</p>
+
+<p>Finally, we benefited most from lots of collaboration and communication inside and outside of the team, <strong>discussing the technical and architectural direction</strong> at length. We even started organising weekly discussions just to run through the architecture we were heading towards, any tweaks we could make or any problems we would encounter along the way. This architecture is continuing to evolve but it’s already paying off, with the team beginning to prove that we can deliver changes quickly to the 7digital catalogue.</p>
+
+<p><em>For a more detailed and technical view on what we did and how we did it, check out Michael Okarimia’s posts: <a href="http://www.michaelokarimia.com/blog/2014/08/11/fixing-7digitals-music-search-part-one-the-gargantuan-index/">part one</a> and <a href="http://www.michaelokarimia.com/blog/2014/08/18/fixing-7digital-music-search-part-two-the-88-speed-improvement/">part two</a>.</em></p>
+
+    </div>
+    
+      <div class="tags">
+    
+        <a class="button is-link" href="/tags/refactoring">refactoring</a>
+    
+        <a class="button is-link" href="/tags/infrastructure">infrastructure</a>
+    
+        <a class="button is-link" href="/tags/lucene">lucene</a>
+    
+        <a class="button is-link" href="/tags/technical-debt">technical-debt</a>
+    
+        <a class="button is-link" href="/tags/automation">automation</a>
+    
+</div>
+
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container has-text-centered">
+    <p></p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+

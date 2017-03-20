@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="" name="keywords">
+<meta content="How we do production release announcements at Driftrock - Daniel Watts" property="og:title">
+<title>How we do production release announcements at Driftrock | Daniel Watts</title>
+<link rel="stylesheet" href="https://danbadge.github.io/css/style.css">
+<link rel="stylesheet" href="https://danbadge.github.io/css/override.css">
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Lora|Open+Sans:400,600" rel="stylesheet">
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://danbadge.github.io"><h1 class="title is-4">Daniel Watts</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/danbadge">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/dan_badge">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section post">
+  <div class="container">
+    <h2 class="subtitle is-6">December 29, 2016</h2>
+    <h1 class="title">How we do production release announcements at Driftrock</h1>
+    <div class="content">
+      <p>At Driftrock we&rsquo;re a small company that has grown from 8 to 18 people in the last 9 months. That&rsquo;s not excessive but it still challenged some existing methods of communication. One of those was how we communicate new features which have recently gone live, somewhere along the way we stopped doing this.
+</p>
+
+<h2 id="shhh-we-re-releasing-software">Shhh! We&rsquo;re Releasing Software</h2>
+
+<p>Previously, we deployed a change to one of our applications and didn&rsquo;t tell anyone unless it solved a particular client issue. This meant we wouldn&rsquo;t seek much feedback on new features and the team&rsquo;s progress and activity was largely unseen by the rest of the company. Bearing in mind that our software is increasingly used internally, this seemed like a real missed opportunity.</p>
+
+<h2 id="enter-release-crab">Enter Release Crab</h2>
+
+<p>Now we have a dedicated Slack channel for internally announcing the release of new features, bug fixes and other changes. The announcement is typically done by a developer after they push their changes to production as they have the most context. But we&rsquo;re pragmatic with it and don&rsquo;t announce every little change, for example, we might wait until we&rsquo;ve finished a sequence of quick deployments. However, <a href="http://tech.driftrock.com/post/tech-values">we value feedback</a> so we&rsquo;re regularly announcing updates.</p>
+
+<p>Here&rsquo;s an example of a few changes going live for Create (an application for quickly creating ads on Facebook):</p>
+
+<p><img src="/img/release-notes.png" alt="Example release notes" /></p>
+
+<p>(Note the crab emoji - this is now synonymous with release announcements)</p>
+
+<p>This seems like a simple and obvious addition to a production deployment but has had surprising impact, here&rsquo;s a few improvements it&rsquo;s made:</p>
+
+<ul>
+<li><strong>Tighter feedback loop</strong> - more communication between the Product Development team (us) and the other teams in Driftrock - Performance Marketing (internal users), Sales and Client Solutions.</li>
+<li><strong>Increased accountability and ownership</strong> - we could automate these release notes but the personal touch adds an element of accountability, giving the readers a point of contact to field any feedback. Therefore the author needs to understand what&rsquo;s going live and (if necessary) what&rsquo;s happening across the team. Gathering this information is required to help the author distil the announcement into something which is simple and concise.</li>
+<li><strong>Keeps deployments small</strong> - similarly that small amount of manual overhead for the author gives us yet another reason to keep the batch size of a deployment small and ensure we&rsquo;re releasing software early and often.</li>
+</ul>
+
+<h2 id="future-releases">Future Releases</h2>
+
+<p>We&rsquo;re still getting used to this process and it will certainly evolve. Early ideas to build on this include automating release notes based on commit messages and working out how we can provide our clients with a similar version, possibly even making these public.</p>
+
+<p>&nbsp;</p>
+
+<p>Update 09/01/2017: Public facing release notes are now available. They are updated every two weeks with the help of our Client Solutions team and you can find them here - <a href="http://knowledge.driftrock.com/product-updates">http://knowledge.driftrock.com/product-updates</a></p>
+    </div>
+    
+      <div class="tags">
+    
+        <a class="button is-link" href="/tags/deployment">deployment</a>
+    
+        <a class="button is-link" href="/tags/continuous-delivery">continuous-delivery</a>
+    
+        <a class="button is-link" href="/tags/feedback">feedback</a>
+    
+</div>
+
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container has-text-centered">
+    <p></p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
