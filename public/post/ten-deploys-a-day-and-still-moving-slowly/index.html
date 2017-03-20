@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="" name="keywords">
+<meta content="Ten deploys a day and still moving slowly - Daniel Watts" property="og:title">
+<title>Ten deploys a day and still moving slowly | Daniel Watts</title>
+<link rel="stylesheet" href="https://danbadge.github.io/css/style.css">
+<link rel="stylesheet" href="https://danbadge.github.io/css/override.css">
+<link rel="stylesheet" href="https://danbadge.github.io/css/override.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Lora|Open+Sans:400,600" rel="stylesheet">
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://danbadge.github.io"><h1 class="title is-4">Daniel Watts</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/danbadge">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/dan_badge">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section post">
+  <div class="container">
+    <h2 class="subtitle is-6">July 21, 2013</h2>
+    <h1 class="title">Ten deploys a day and still moving slowly</h1>
+    <div class="content">
+      
+
+<p>There’s a feeling within my team at <a href="http://www.7digital.com/">7digital</a> that we’re taking a long time to complete projects or features. Oddly this isn’t something we are currently measuring. We do though measure the <a href="http://blog.robbowley.net/2012/01/06/productivity-throughput-and-cycle-time/">throughput and cycle time</a> of tasks. Tasks are items of work which the team create as a small iterative step towards a larger feature or story. This is useful for visualising the teams productivity, with the idealistic target of low cycle time and high throughput.</p>
+
+<p>Typically our stakeholders are interested in an estimation and delivery of a project or feature not a task. I was interested to see whether this was something we could measure, with a slant towards having historical data available for helping us estimate. I gathered all the tasks into a spreadsheet going back to the beginning of September 2012 and assigned a descriptive project and feature name I hoped the rest of the organisation could understand. This had the added benefit of forcing me to step back from the implementation and attempt to relate technical items to organisation priorities, something which is far too often overlooked.</p>
+
+<p>This produced some interesting results, which aligned with the team’s fears. Our average lead time of the six planned projects we had completed since September was 160 days. Over half a year! Moreover, this only represents the time it takes for an organisation-wide project to pass-through our team, often there are several teams involved each with their own changes and features to implement. We do roughly two features per project and so it’s a similar story there. On average we’re taking 72 days to complete a feature.</p>
+
+<p>We have our <a href="http://martinfowler.com/bliki/DeploymentPipeline.html">deployment pipeline</a> at 7digital and deploying changes to production is an absolute breeze. In fact, we’re so good at it we can’t stop talking about it <a href="http://prezi.com/2wczo541qzpy/dddea-continuous-delivery-at-7digital/">here</a>, <a href="http://blogs.7digital.com/dev/2012/06/20/evolution-of-deployment-in-7digital/">here</a> and <a href="http://blogs.7digital.com/dev/2012/04/28/how-we-do-deployments/">here</a>. So what’s taking us so long to get new features out the door?</p>
+
+<h2 id="technical-debt">Technical Debt</h2>
+
+<p>We have a lot of technical debt. It’s not tested, it’s horribly coupled and entirely confusing, a proper <a href="http://en.wikipedia.org/wiki/Big_ball_of_mud">ball of mud</a>. We try not too but occasionally we touch it and it can slow development down. We’ve been bitten before too where a change we made broke something unrelated in production. We can roll back with ease though so it’s not all that scary and can’t be entirely accountable for our tame pace.</p>
+
+<h2 id="bottlenecks">Bottlenecks</h2>
+
+<p>Developing public-facing APIs with numerous existing clients all with their own priorities and ageing implementations presents a challenge in patience and communication. Fortunately, we’ve already made some progress here: In a recent project we needed to migrate a few external API consumers to a new endpoint. We did all the work, communicated the changes and waited. Several months later we started to see some usage only to find out our endpoint wasn’t quite working as expected. To try and mitigate that we have a new policy within our team, dogfooding. We’re now attempting to consume any of our new endpoints we can. There’s two big benefits here: code running in production and failing early.</p>
+
+<h2 id="unplanned-projects">Unplanned Projects</h2>
+
+<p>Whilst looking back through the data and trying to determine project names, relationships began to emerge between occasional tasks. We found examples of sizeable unplanned projects, not just unplanned tasks, bubbling away in the background. These projects did have clear value and even related back to wider organisational priorities. As a team though we had already committed to other supposedly more important already in-progress projects. Crucially, this results in extended delivery dates on all the projects being worked on.</p>
+
+<h2 id="distractions-in-parallel">Distractions in Parallel</h2>
+
+<p>I’ve done the maths and six projects at 160 days each in under a year doesn’t add up. We’ve toyed with a number setups but generally we have two streams and therefore two projects or two features on the go at any one time with a pair on each thing (there’s four of us). This means our focus is constantly shifting between those two items whilst we attempt to give them equal attention. Looking at this further, I attempted to determine the amount of days we spent not working on an ‘in-progress’ feature and in every example it dwarfs the amount of days spent working on the feature. Clearly by spreading ourselves across two things we’re generating much more waste then we realise and unlike technical debt and bottlenecks this is one area where we have much more control.</p>
+
+    </div>
+    
+      <div class="tags">
+    
+        <a class="button is-link" href="/tags/continuous-delivery">continuous-delivery</a>
+    
+        <a class="button is-link" href="/tags/technical-debt">technical-debt</a>
+    
+        <a class="button is-link" href="/tags/cycle-time">cycle-time</a>
+    
+        <a class="button is-link" href="/tags/deployment">deployment</a>
+    
+</div>
+
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container has-text-centered">
+    <p></p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
