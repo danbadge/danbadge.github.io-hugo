@@ -2,7 +2,7 @@
 title = "How we do production release announcements at Driftrock"
 date = "2016-12-29T16:51:00Z"
 author = "Daniel Watts"
-tags = ["deployment", "continuous-delivery", "feedback"]
+tags = ["deployment", "continuous-delivery", "feedback", "driftrock"]
 slug = "release-notes-at-driftrock"
 +++
 
