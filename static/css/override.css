@@ -65,7 +65,9 @@ a, a:visited, a:hover {
   margin-top: 60px;
 }
 
-.post .content h2::before {
+.post .content h2::before,
+.post .content h3::before,
+.post .content h4::before {
     content: none;
 }
 
