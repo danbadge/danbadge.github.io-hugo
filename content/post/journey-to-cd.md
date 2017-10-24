@@ -58,6 +58,7 @@ As a side note, Snap CI didn’t really live up to expectation but even this gen
 
 Hopefully that gives you an insight into how we continue to transition towards Continuous Delivery and the patterns that helped us. Our approach continues to evolve as we learn and we recognise that we've still got some way to go. Summarising all of that effort into four steps certainly oversimplifies, to get to where we are now took many months even for our small team. This journey reminded us that a change like this doesn’t happen overnight and it takes lots of small, unremarkable steps in the right direction.
 
+
 &nbsp;
 
 ### Other Helpful Resources

@@ -17,8 +17,11 @@ if [ $# -eq 1 ]
 fi
 git commit -m "$msg"
 
-# Push source and build repos.
-git push --recurse-submodules=on-demand
-
 # Come Back
 cd ..
+
+# Push source and build repos.
+git add -A
+git commit -m "Update submodule to latest"
+
+git push
