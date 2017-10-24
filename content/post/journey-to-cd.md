@@ -42,6 +42,7 @@ With that seed planted, a working example and regular problems shipping quality 
 
 ### Step 4 - Persistent PR
 One pattern mentioned in the book stood out for me throughout this process - Persistent PR. On reflection this subtly appeared in a number of places, sometimes intentional but often unintentionally. Here’s a breakdown of where it featured:
+
 * We changed our regular stand-up meeting so that it focussed first on what was deployed to production, then staging and then active development - typically known as [Walk the Board](https://blog.matthewbutt.com/2016/05/16/reinvigorating-a-daily-stand-up-by-walking-the-board/). Although indirect, it provides a regular reminder to the team to be focussed first on shipping software and how we can progress work items into production.
 * At a weekly company meeting we briefly demoed how we changed our approach to deploying software. Incidentally this came about by chance but it was an opportunity worth taking (_Smell of Success_).
 * We started to capture and communicate metrics around the number of deployments to production.
