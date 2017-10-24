@@ -22,6 +22,6 @@ cd ..
 
 # Push source and build repos.
 git add -A
-git commit -m "Update submodule to latest"
+git commit -m "Update submodule with latest commit"
 
-git push
+git push --recurse-submodules=on-demand
