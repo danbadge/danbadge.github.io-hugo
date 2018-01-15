@@ -2,3 +2,7 @@
 	path = public
 	url = git@github.com:danbadge/danbadge.github.io.git
 	branch = master
+[submodule "themes/hemingway2"]
+	path = themes/hemingway2
+	url = https://gitlab.com/beli3ver/hemingway2.git
+	branch = master
