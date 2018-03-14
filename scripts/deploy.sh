@@ -24,4 +24,4 @@ cd ..
 git add -A
 git commit -m "Update submodule with latest commit"
 
-git push --recurse-submodules=on-demand
+git push --recurse-submodules=on-demand -f
