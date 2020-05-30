@@ -56,6 +56,4 @@ Firstly, it's best to prepare some feedback in advance of a feedback session if 
 
 **Start, stop, continue** - Another retrospective format which works well here too.
 
-**Compliment sandwich** - With this you can give more negative/constructive feedback and then follow it up with much more positive feedback.
-
 There's loads of options to prepare and structure feedback so find whatever works best for you.
