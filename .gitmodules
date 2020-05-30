@@ -6,3 +6,7 @@
 	path = themes/hemingway2
 	url = https://github.com/cmcaine/hemingway2.git
 	branch = master
+[submodule "themes/hucore"]
+	path = themes/hucore
+	url = https://github.com/mojoaar/hucore.git
+	branch = master

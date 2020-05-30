@@ -1,7 +1,7 @@
 baseurl = "https://www.danielwatts.info"
 languageCode = "en"
 title = "Daniel Watts"
-theme = "hemingway2"
+theme = "hucore"
 copyright = ""
 disqusShortname = ""
 googleAnalytics = ""
