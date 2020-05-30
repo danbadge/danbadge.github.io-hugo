@@ -1,5 +1,4 @@
 {{ partial "header" . }}
-{{ partial "nav" . }}
 <section class="section list">
   <div class="container">
     {{ range sort .Paginator.Pages }}
@@ -16,4 +15,3 @@
   </div>
 </section>
 {{ partial "pager" . }}
-{{ partial "footer" . }}
