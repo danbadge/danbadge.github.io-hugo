@@ -1,5 +1,6 @@
 
 {{ partial "header" . }}
+{{ partial "nav" . }}
 <section class="section post">
   <div class="container">
     <h2 class="subtitle is-6">{{ .Date.Format "January 2, 2006" }}</h2>
@@ -7,5 +8,9 @@
     <div class="content">
       {{ .Content }}
     </div>
+    {{ if .Params.tags }}
+      {{ partial "tags" .Params.tags }}
+    {{ end }}
   </div>
 </section>
+{{ partial "footer" . }}
