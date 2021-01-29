@@ -69,13 +69,13 @@ Hopefully that gives you an insight into how we continue to transition towards C
 ### Change Patterns Reference
 Paraphrasing slightly from the book here’s a selection of patterns I’ve mentioned above:
 
-**Baby Steps** - Take one small step at a time towards your goal.<br />
-**Involve Everyone** - Everyone should have an opportunity to make their own contribution.<br />
-**Plant the Seeds** - Take every opportunity you can to spark interest in an idea.<br />
-**Just Do It** - Don’t wait for the perfect moment, instead take the first baby step and start learning.<br />
-**Pick your Battles** - Focus your efforts on the most pressing issues.<br />
-**Trial Run** - When there’s reluctance to commit to an idea, suggest an experiment for a short period.<br />
-**Wake-up Call** - Point out the issues that create a need for change.<br />
-**Ask for Help** - Look for people and resources to help your efforts and encourage involvement.<br />
-**Persistant PR** - Keep the new idea in front of everyone, consistently promote it in a variety of ways.<br />
-**Smell of Success** - When your efforts produce a visible positive result, treat this as a teaching moment.<br />
+* **Baby Steps** - Take one small step at a time towards your goal.
+* **Involve Everyone** - Everyone should have an opportunity to make their own contribution.
+* **Plant the Seeds** - Take every opportunity you can to spark interest in an idea.
+* **Just Do It** - Don’t wait for the perfect moment, instead take the first baby step and start learning.
+* **Pick your Battles** - Focus your efforts on the most pressing issues.
+* **Trial Run** - When there’s reluctance to commit to an idea, suggest an experiment for a short period.
+* **Wake-up Call** - Point out the issues that create a need for change.
+* **Ask for Help** - Look for people and resources to help your efforts and encourage involvement.
+* **Persistant PR** - Keep the new idea in front of everyone, consistently promote it in a variety of ways.
+* **Smell of Success** - When your efforts produce a visible positive result, treat this as a teaching moment.

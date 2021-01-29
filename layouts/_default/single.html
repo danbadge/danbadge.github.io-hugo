@@ -3,8 +3,8 @@
 {{ partial "nav" . }}
 <section class="section post">
   <div class="container">
-    <h2 class="subtitle is-6">{{ .Date.Format "January 2, 2006" }}</h2>
     <h1 class="title">{{ .Title }}</h1>
+    <h2 class="subtitle is-6">{{ .Date.Format "January 2, 2006" }}</h2>
     <div class="content">
       {{ .Content }}
     </div>

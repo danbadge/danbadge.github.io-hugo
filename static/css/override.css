@@ -75,6 +75,15 @@ a, a:visited, a:hover {
   font-size: 28px;
 }
 
+.post .title {
+  font-size: 38px;
+  margin-bottom: 40px;
+}
+
+.post .subtitle {
+  margin-bottom: 20px;
+}
+
 div.tags {
   margin-top: 40px;
 }
@@ -90,4 +99,35 @@ div.tags {
 
 .tags a.button.is-link:hover {
   background-color: rgba(0,0,0,.08);
+}
+
+.home .description {
+  padding-bottom: 40px;
+  margin-bottom: 30px;
+  border-bottom: solid 1px #f4f4f4;
+  display: flex;
+  justify-content: space-between;
+}
+
+.home .description div {
+  font-family: 'Open Sans', 'Lucida Sans', sans-serif;
+  font-size: 16px;
+}
+
+.home .description a {
+  text-decoration: underline;
+}
+
+.header {
+  border-bottom: solid 1px #f4f4f4;
+}
+
+.description .left-col {
+  width: 20%;
+  padding-top: 5px;
+  padding-right: 10px;
+}
+
+.description .right-col {
+  width: 80%;
 }

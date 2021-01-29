@@ -1,11 +1,28 @@
 {{ partial "header" . }}
 {{ partial "nav" . }}
-<section class="section list">
+<section class="section list home">
   <div class="container">
+    {{ if .IsHome }}
+      <div class="description">
+        <div class="left-col">
+          <img src="img/me.png" alt="Daniel Watts profile photo" />
+        </div>
+        <div class="right-col">
+          Hi! I'm an engineering leader and Venture CTO at <a href="https://www.bcgdv.com">BCG Digital Ventures</a> where I focus on building high-performing teams who create quality, maintainable products.
+          I have 12+ years of experience building cloud-based distributed systems in several different languages and technologies; across a range of industries such as geospatial, eCommerce, digital media, and finance.
+          Previously at <a href="https://www.thoughtworks.com">ThoughtWorks</a>, <a href="https://www.7digital.com">7digital</a>, and <a href="https://www.driftrock.com">Driftrock</a>.
+          <br />
+          <br />
+          You'll find some of my very occasional writing on this site. Also, you can check out my newsletter, <a href="https://www.grownewsletter.com/">Grow</a>, that I co-create with <a href="https://hugo.im">Hugo</a>.<br />
+          <a href="https://www.grownewsletter.com/">Grow</a> is a regular newsletter that delivers curated content for engineering leaders, managers, CTOs, and any tech-industry folks helping to grow people and products.
+        </div>
+      </div>
+    {{ end }}
+
     {{ range sort .Paginator.Pages }}
     <article>
-      <h2 class="subtitle is-6">{{ .Date.Format "January 2, 2006" }}</h2>
       <h1 class="title"><a href="{{ .Permalink }}">{{ .Title }}</a>{{ if .Draft }} ::Draft{{ end }}</h1>
+      <h2 class="subtitle is-6">{{ .Date.Format "January 2, 2006" }}</h2>
       <div class="content">
         <a href="{{ .Permalink }}">
           {{ .Summary | plainify | safeHTML }}..

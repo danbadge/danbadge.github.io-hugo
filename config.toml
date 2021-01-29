@@ -4,19 +4,25 @@ title = "Daniel Watts"
 theme = "hucore"
 copyright = ""
 disqusShortname = ""
-googleAnalytics = ""
-description = "Stuff I did in teams building software"
-keywords = []
+googleAnalytics = "UA-40668336-1"
+paginate = 5
+
+[params]
+author = "Daniel Watts"
+description = "An engineering leader and CTO with a focus on building high-performing teams and helping them create high-quality, maintainable products."
+keywords = [ "engineering", "leadership", "CTO", "technology", "software", "engineer" ]
 
 [taxonomies]
 tag = "tags"
 category = "categories"
 
-[params]
-
 [params.highlight]
 style = "github"
 languages = []
+
+[[params.social]]
+url = "https://www.linkedin.com/in/danielwatts2/"
+fa_icon = "fa-linkedin"
 
 [[params.social]]
 url = "https://github.com/danbadge"
